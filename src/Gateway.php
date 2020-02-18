@@ -2,8 +2,9 @@
 
 namespace Omnipay\Etherscan;
 
-use Omnipay\Etherscan\Message\FetchBalanceRequest;
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Etherscan\Message\FetchBalanceRequest;
+use Omnipay\Etherscan\Message\FetchTransactionRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -43,5 +44,10 @@ class Gateway extends AbstractGateway
     public function fetchBalance(array $parameters = [])
     {
         return $this->createRequest(FetchBalanceRequest::class, $parameters);
+    }
+
+    public function fetchTransaction(array $parameters = [])
+    {
+        return $this->createRequest(FetchTransactionRequest::class, $parameters);
     }
 }
