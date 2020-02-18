@@ -71,7 +71,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     {
         $query = http_build_query($data, '', '&');
 
-        $httpResponse = $this->httpClient->request('GET', $this->getEndpoint(), [], $query);
+        $httpResponse = $this->httpClient->request('GET', $this->getEndpoint() . '?' . $query);
 
         return $this->createResponse(json_decode($httpResponse->getBody()->getContents()));
     }
