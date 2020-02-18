@@ -18,7 +18,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Omnipay\\Coinpayments\\" : "src/"
+      "Omnipay\\Etherscan\\" : "src/"
     }
   },
   "minimum-stability": "stable",
