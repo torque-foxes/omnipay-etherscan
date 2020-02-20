@@ -12,14 +12,43 @@ This step is required before using other methods.
 $gateway = Omnipay::create('Etherscan');
    
 $gateway->initialize([
-    'api_key' => '...'
+    'api_key' => '...',
+    'network' => 'main' // kovan can also be used
 ]);
 ```
 
 ### Fetch Address Balance
 
 ```
-$response = $gateway->fetchBalance('0xAAAAAAAAAA')->send();
+$response = $gateway->fetchBalance(['address' => '0xAAAAAAAAAA...'])->send();
+
+if ($response->isSuccessful()) {
+    $data = $response->getData();
+} else {
+    $errorMessage = $response->getMessage();
+}
+```
+
+### Fetch Contract (ERC20 token) Address Balance
+
+```
+$response = $gateway->fetchTokenBalance([
+    'address' => '0xAAAAAAAAAA...',
+    'contract_address' => '0xAAAAAAAAAA...'
+])->send();
+
+if ($response->isSuccessful()) {
+    $data = $response->getData();
+} else {
+    $errorMessage = $response->getMessage();
+}
+```
+
+
+### Fetch Transaction Info
+
+```
+$response = $gateway->fetchTransaction(['transactionReference' => '0xAAAAAAAAAA...'])->send();
 
 if ($response->isSuccessful()) {
     $data = $response->getData();
