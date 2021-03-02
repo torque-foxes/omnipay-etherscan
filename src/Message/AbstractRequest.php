@@ -6,7 +6,10 @@ use Omnipay\Common\Message\AbstractRequest as OmnipayAbstractRequest;
 
 abstract class AbstractRequest extends OmnipayAbstractRequest
 {
-    private $endpoint = 'https://%s.etherscan.io/api';
+    private $endpoints = [
+        'main'  => 'https://api.etherscan.io/api',
+        'kovan' => 'https://api-kovan.etherscan.io/api',
+    ];
 
     protected $responseClass = Response::class;
 
@@ -17,7 +20,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     public function getEndpoint(): string
     {
         $network = $this->getNetwork();
-        return sprintf($this->endpoint, ($network == 'main' ? 'api' : $network));
+        return $this->endpoints[$this->getNetwork()] ?? $this->endpoints['main'];
     }
 
     public function getApiKey(): string
