@@ -6,7 +6,7 @@ class JsonRpcResponse extends Response
 {
     public function isSuccessful()
     {
-        return isset($this->data->result) && !isset($this->data->error);
+        return isset($this->data->result) && !is_null($this->data->result) && !isset($this->data->error);
     }
 
     /**
@@ -16,6 +16,8 @@ class JsonRpcResponse extends Response
      */
     public function getMessage()
     {
-        return $this->data->error->message;
+        return !isset($this->data->result) || is_null($this->data->result)
+            ? 'No data found'
+            : ($this->data->error->message ?? 'UNKNOWN');
     }
 }
