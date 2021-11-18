@@ -11,6 +11,8 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         'kovan' => 'https://api-kovan.etherscan.io/api',
         'bsc-main' => 'https://api.bscscan.com/api',
         'bsc-test' => 'https://testnet.bscscan.com/api',
+        'polygon-main' => 'https://api.polygonscan.com/api',
+        'polygon-test' => 'https://api-testnet.polygonscan.com/api',
     ];
 
     protected $responseClass = Response::class;
