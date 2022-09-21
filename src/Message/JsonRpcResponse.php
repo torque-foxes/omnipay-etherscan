@@ -18,6 +18,13 @@ class JsonRpcResponse extends Response
     {
         return !isset($this->data->result) || is_null($this->data->result)
             ? 'No data found'
-            : ($this->data->error->message ?? 'UNKNOWN');
+            : ($this->data->result->message ?? 'UNKNOWN');
+    }
+
+    public function getStatus()
+    {
+        return !($this->getData()) || is_null($this->getData())
+            ? 'No data found'
+            : ($this->getData()->status ? 'Success' : 'Transaction failed');
     }
 }

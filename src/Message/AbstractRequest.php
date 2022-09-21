@@ -13,6 +13,8 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         'bsc-test' => 'https://testnet.bscscan.com/api',
         'polygon-main' => 'https://api.polygonscan.com/api',
         'polygon-test' => 'https://api-testnet.polygonscan.com/api',
+        'rinkeby' => 'https://api-rinkeby.etherscan.io/api',
+        'goerli' => 'https://api-goerli.etherscan.io/api',
     ];
 
     protected $responseClass = Response::class;
